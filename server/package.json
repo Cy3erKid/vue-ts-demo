@@ -1,0 +1,27 @@
+{
+  "name": "server-api",
+  "version": "1.0.0",
+  "description": "mockup server with nodejs call api from jsonplaceholder",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js"
+  },
+  "keywords": [
+    "apiserver",
+    "nodejs",
+    "jsonplaceholder"
+  ],
+  "author": "Apiwat Nongwa",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.4"
+  }
+}
