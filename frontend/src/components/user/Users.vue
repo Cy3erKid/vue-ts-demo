@@ -64,6 +64,7 @@
   </div>
 </template>
 <script lang="ts">
+import User from '../../types/User'
 const people = [
   {
     name: 'Jane Cooper',
@@ -80,9 +81,9 @@ import { defineComponent } from 'vue'
 export default defineComponent({
     name: "Users",
     setup() {
-    return {
-      people,
-    }
+      return {
+        people,
+      }
   },
 })
 </script>
