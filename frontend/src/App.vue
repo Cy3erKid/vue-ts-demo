@@ -12,16 +12,13 @@
         <!-- /End replace -->
       </div>
     </main>
-    
   </div>
-  
 </template>
 <script>
-
-import Menu from './components/UI/Menu'
+import Menu from "./components/UI/Menu";
 export default {
   components: {
-    Menu
-  }
-}
+    Menu,
+  },
+};
 </script>

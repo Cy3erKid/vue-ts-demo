@@ -7,12 +7,12 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Header from '../components/UI/Header.vue'
+import Header from "../components/UI/Header.vue";
 
 export default defineComponent({
   name: "About",
   components: {
-    Header
+    Header,
   },
 });
 </script>

@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
-import Menu from './Menu.vue'
+import { defineComponent } from "vue"
+import Menu from "./Menu.vue"
 
 
 export default defineComponent({

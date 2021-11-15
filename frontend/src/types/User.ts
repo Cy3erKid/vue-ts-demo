@@ -6,7 +6,7 @@ export default interface User{
     address: Address;
     phone: string;
     website: string;
-    company: Company
+    company: Company;
 }
 
 interface Address{
@@ -23,5 +23,5 @@ interface Address{
 interface Company{
     name: string;
     catchPhrase: string;
-    bs: string
+    bs: string;
 }
