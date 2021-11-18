@@ -64,7 +64,6 @@
                         </label>
                         <input
                           type="email"
-                          :email="email"
                           :value="Profile.email"
                           placeholder="Email"
                           class="input input-bordered"
@@ -76,7 +75,6 @@
                         </label>
                         <input
                           type="tel"
-                          :v-model="phone"
                           :value="Profile.phone"
                           placeholder="Phone"
                           class="input input-bordered"
@@ -161,6 +159,7 @@ export default defineComponent({
   },
   methods: {
     updateProfile(){
+      console.log(this.fullName)
     }
   },
 });
