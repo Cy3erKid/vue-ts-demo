@@ -20,6 +20,7 @@ services:
 
   api:
     image: node-server
+    restart: always
     container_name: node-api
     build:
       context: ./server
@@ -40,9 +41,7 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     ports:
       - "80:80"
-    
     depends_on:
-      - api
       - web
     networks:
       - public
