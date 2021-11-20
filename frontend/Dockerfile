@@ -4,7 +4,7 @@ WORKDIR /var/www/html/app
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm install && npm cache clean --force
 
 RUN npm rebuild node-sass
 
