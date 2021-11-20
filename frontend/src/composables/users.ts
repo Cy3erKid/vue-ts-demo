@@ -42,6 +42,19 @@ const User = {
 
     return { ...toRefs(post.items) };
   },
+  updatUserProfile: async (data: any) => {
+    const profile = reactive({ item: {} as User });
+    await axios
+      .put(`/api/users/update/${data.id}`, data)
+      .then((result) => {
+        profile.item = result.data.users;
+      })
+      .catch((err) => {
+        return err;
+      });
+
+    return { ...toRefs(profile.item) };
+  },
 };
 
 export default User;

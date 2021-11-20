@@ -140,26 +140,8 @@ const updateUser = async (req, res) => {
     const data = req.body;
     const params = {
       id: data.id,
-      name: data.name,
-      username: data.username,
-      email: data.email,
-      address: {
-        street: data.street,
-        suite: data.suite,
-        city: data.city,
-        zipcode: data.zipcode,
-        geo: {
-          lat: data.lat,
-          lng: data.lng,
-        },
-      },
       phone: data.phone,
-      website: data.website,
-      company: {
-        name: data.company,
-        catchPhrase: data.catchPhrase,
-        bs: data.bs,
-      },
+      email: data.email      
     };
 
     await axios

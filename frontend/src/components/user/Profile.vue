@@ -41,29 +41,31 @@
             </p>
 
             <div class="card-actions justify-end">
-              <div>
+              <form @submit.prevent.stop="updateProfile($event)">
                 <label for="my-modal-2" class="btn btn-primary">Edit</label>
                 <input type="checkbox" id="my-modal-2" class="modal-toggle" />
                 <div id="edit-profile" class="modal">
                   <div class="modal-box">
                     <div class="modal-body">
-                      <div class="form-control">
+                      <!-- <div class="form-control">
                         <label class="label">
                           <span class="label-text">Name</span>
                         </label>
                         <input
                           type="text"
+                          name="name"
                           placeholder="Name"
                           v-bind:value="Profile.name"
                           class="input input-bordered"
                         />
-                      </div>
+                      </div> -->
                       <div class="form-control">
                         <label class="label">
                           <span class="label-text">Email : </span>
                         </label>
                         <input
                           type="email"
+                          name="email"
                           :value="Profile.email"
                           placeholder="Email"
                           class="input input-bordered"
@@ -75,7 +77,8 @@
                         </label>
                         <input
                           type="tel"
-                          :value="Profile.phone"
+                          name="phone"
+                          v-bind:value="Profile.phone"
                           placeholder="Phone"
                           class="input input-bordered"
                         />
@@ -83,14 +86,18 @@
                     </div>
 
                     <div class="modal-action">
-                      <button @click="updateProfile" for="my-modal-2" class="btn btn-primary"
-                        >Update</button
+                      <button
+                        type="submit"
+                        for="my-modal-2"
+                        class="btn btn-primary"
                       >
+                        Update
+                      </button>
                       <label for="my-modal-2" class="btn">Close</label>
                     </div>
                   </div>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -116,8 +123,10 @@
             </div>
 
             <div class="justify-center card-actions">
-              <a href="/post/view" class="btn btn-outline btn-accent"
-                >More info</a
+              <router-link
+                :to="{ name: `ViewPost`, params: { postId: post.id } }"
+                class="btn btn-outline btn-accent"
+                >More info</router-link
               >
             </div>
           </div>
@@ -128,17 +137,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from "vue";
+import { defineComponent, ref, toRef } from "vue";
 import User from "@/types/User";
 import Post from "@/types/Post";
+import UserService from "@/composables/users";
 
 export default defineComponent({
   name: "Profile",
   data() {
     return {
-      fullName: "",
-      email: "",
-      phone: "",
+      form: {
+        email: "",
+        phone: "",
+        id: "",
+      },
     };
   },
   props: {
@@ -158,9 +170,22 @@ export default defineComponent({
     },
   },
   methods: {
-    updateProfile(){
-      console.log(this.fullName)
-    }
+    async updateProfile(ev: any) {
+      this.form = {
+        email: ev.target.email.value,
+        phone: ev.target.phone.value,
+        id: `${this.Profile?.id}`,
+      };
+
+
+      await UserService.updatUserProfile(this.form)
+        .then((res) => {
+          this.$emit("handle-update", res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
 });
 </script>

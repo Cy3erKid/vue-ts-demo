@@ -5,6 +5,7 @@
       :isLoading="loading"
       :postLoading="loadPost"
       :Posts="Posts"
+      @handle-update="getUserProfile"
     />
   </div>
 </template>
@@ -65,6 +66,15 @@ export default defineComponent({
       loadPost,
       loading,
     };
+  },
+  methods: {
+    getUserProfile(data: any) {
+      this.User = {
+        ...this.User,
+        email: data.email.value,
+        phone: data.phone.value,
+      }
+    },
   },
 });
 </script>
