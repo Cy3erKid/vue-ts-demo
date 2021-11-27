@@ -1,0 +1,3 @@
+#Please rename file env-example to .env
+
+API_URL=https://jsonplaceholder.typicode.com
