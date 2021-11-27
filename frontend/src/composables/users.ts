@@ -55,6 +55,17 @@ const User = {
 
     return { ...toRefs(profile.item) };
   },
+  deleteUser: async (userId: string) => {
+    if (userId !== "") {
+      const resp = reactive({ status: false });
+      await axios.delete(`/api/users/delete/${userId}`).then((result) => {
+        if(result.data.status === 200){
+          resp.status = true;
+        }
+      });
+      return { ...toRefs(resp) };
+    }
+  },
 };
 
 export default User;

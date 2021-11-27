@@ -37,7 +37,6 @@
                   </div>
                 </div>
               </div>
-              
             </td>
             <td>
               <div class="text-sm text-gray-900">{{ user.website }}</div>
@@ -52,6 +51,8 @@
                 class="text-indigo-600"
                 >Profile</router-link
               >
+
+              <button @click="deleteUser(user.id)" class="ml-2">Delete</button>
             </td>
           </tr>
         </template>
@@ -65,15 +66,16 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, onMounted } from "vue";
 import Users from "@/composables/users";
+import * as _ from "lodash";
+
 export default defineComponent({
   name: "Users",
   setup() {
     const users = ref({});
     const isLoading = ref(false);
     const error = ref(false);
-
     const getUsers = async () => {
       isLoading.value = true;
       try {
@@ -84,9 +86,26 @@ export default defineComponent({
         error.value = true;
       }
     };
-    getUsers();
+    onMounted(() => {
+      getUsers();
+    });
 
-    return { isLoading, users, error };
+    const deleteUser = async (id: string) => {
+      try {
+        const resp = await Users.deleteUser(id).then(res => res);
+        if(resp?.status){
+          const delUser = _.filter(users.value,function(o: any) {
+            return o.id !== Number(id);
+          });
+          users.value = delUser;
+        }
+        
+      } catch (error) {
+        isLoading.value = false;
+        error.value = true;
+      }
+    };
+    return { isLoading, users, error, deleteUser };
   },
 });
 </script>

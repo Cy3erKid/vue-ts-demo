@@ -13,12 +13,13 @@
     "daisyui": "^1.16.2",
     "dayjs": "^1.10.7",
     "dotenv": "^10.0.0",
+    "loadash": "^1.0.0",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.176",
+    "@types/lodash": "^4.14.177",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
     "@vue/cli-plugin-babel": "~4.5.0",

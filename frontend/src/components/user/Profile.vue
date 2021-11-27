@@ -47,18 +47,6 @@
                 <div id="edit-profile" class="modal">
                   <div class="modal-box">
                     <div class="modal-body">
-                      <!-- <div class="form-control">
-                        <label class="label">
-                          <span class="label-text">Name</span>
-                        </label>
-                        <input
-                          type="text"
-                          name="name"
-                          placeholder="Name"
-                          v-bind:value="Profile.name"
-                          class="input input-bordered"
-                        />
-                      </div> -->
                       <div class="form-control">
                         <label class="label">
                           <span class="label-text">Email : </span>
@@ -137,7 +125,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, toRef } from "vue";
+import { defineComponent } from "vue";
 import User from "@/types/User";
 import Post from "@/types/Post";
 import UserService from "@/composables/users";
